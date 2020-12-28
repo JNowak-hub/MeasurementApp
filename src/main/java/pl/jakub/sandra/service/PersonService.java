@@ -16,16 +16,6 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public void addMeasurementToPerson(Long personId, Measurement measurement){
-        Optional<Person> optionalPerson = personRepository.findById(personId);
-        if(optionalPerson.isEmpty()){
-            throw new RuntimeException("Person not found");
-        }
-        Person person = optionalPerson.get();
-        person.getMeasurements().add(measurement);
-        personRepository.save(person);
-    }
-
     public Person addPerson(Person person){
         if(person == null){
             throw new RuntimeException("User cannot be null");
